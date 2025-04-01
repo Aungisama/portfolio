@@ -1,0 +1,97 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.item {
+    flex: 1 1 300px; /* Grow, shrink, and set a minimum width */
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+        flex-direction: column; /* Stack items on smaller screens */
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .item {
+        flex: 1 1 100%; /* Full width on smaller screens */
+    }
+}
+
+.moving-line {
+    position: fixed; /* Keeps the line fixed relative to the viewport */
+    top: 0; /* Always at the top of the screen */
+    left: 2%; /* Adjust horizontal position as needed */
+    width: 1px; /* Thin vertical line */
+    height: 191px; /* Set a fixed height for the line */
+    background: #ABB2BF; /* Change color if needed */
+    z-index: 9999; /* Stays above other elements */
+    pointer-events: none; /* Allows interaction with elements below */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-start; 
+    justify-content: flex-end; 
+    gap: 35px; /* Add spacing between the line and the SVG */
+}
+
+body {
+    width: 1200px; /* Fixed width */
+    height: 3000px; /* Fixed height */
+    margin: 0 auto; /* Center the page */
+    z-index: 1; /* Stays below the moving line */
+    padding-top: 50px; /* Add padding to prevent content from overlapping the navbar */
+    color: #FFFFFF; /* Optional: Set text color for better contrast */
+    background-color: #282C33;
+    }
+
+.svg-navbar {
+    position: fixed; /* Keeps the navbar fixed at the top */
+    top: 0;
+    left :20%; /* Adjust horizontal position as needed */
+    width: 80%; /* Full width of the screen */
+    height: 50px; /* djust height as needed */
+    margin-left: -150px;
+}
+
+.moving-line img, .moving-line svg {
+    pointer-events: auto; /* Ensure the SVG is clickable */
+    display: block;
+    width: 32px; /* Adjust size as needed */
+    height: 32px; /* Adjus size as needed */
+    margin-left: -15px;
+    margin-bottom: -110px;
+    margin-top: 80px; 
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */    
+}
+
+.sidebar-left {
+    position: fixed ; /* Keeps the sidebar fixed relative to the viewport */
+    top: 0;
+    left: 0; /* Position the sidebar on the left */
+    width: 15vw; /* Adjust width as needed */
+    height: 100%; /* Full height of the viewport */
+    background-image: url('page/background.png'); /* Add background image */
+    background-size: cover; /* Cover the entire sidebar area */
+    background-repeat: no-repeat; /* Prevent repeating the background image */
+    z-index: 1; /* Stays below the moving line */
+}
+
+.sidebar-right {
+    position: fixed ; /* Keeps the sidebar fixed relative to the viewport */
+    top: 0;
+    right: 0; /* Position the sidebar on the right */
+    width: 15vw; /* Adjust width as needed */
+    height: 100%; /* Full height of the viewport */
+    background-image: url('page/background.png'); /* Add background image */
+    background-size: cover; /* Cover the entire sidebar area */
+    background-repeat: no-repeat; /* Prevent repeating the background image */
+    z-index: 1; /* Stays below the moving line */
+}
+
+
