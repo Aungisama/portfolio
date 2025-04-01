@@ -41,8 +41,9 @@ img {
 }
 
 body {
-    width: 1200px; /* Fixed width */
-    height: 3000px; /* Fixed height */
+    width: 80vw;  /* Makes sure the body takes full width */
+    height: 100vh; /* Makes sure it takes full height */
+    overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
     margin: 0 auto; /* Center the page */
     z-index: 1; /* Stays below the moving line */
     padding-top: 50px; /* Add padding to prevent content from overlapping the navbar */
@@ -86,7 +87,7 @@ body {
     position: fixed ; /* Keeps the sidebar fixed relative to the viewport */
     top: 0;
     right: 0; /* Position the sidebar on the right */
-    width: 15vw; /* Adjust width as needed */
+    width: 5vw; /* Adjust width as needed */
     height: 100%; /* Full height of the viewport */
     background-image: url('page/background.png'); /* Add background image */
     background-size: cover; /* Cover the entire sidebar area */
