@@ -1,35 +1,9 @@
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.item {
-    flex: 1 1 300px; /* Grow, shrink, and set a minimum width */
-}
-
-@media only screen and (max-width: 480px) {
-    .container {
-        flex-direction: column; /* Stack items on smaller screens */
-    }
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-@media (max-width: 768px) {
-    .item {
-        flex: 1 1 100%; /* Full width on smaller screens */
-    }
-}
-
 .moving-line {
     position: fixed; /* Keeps the line fixed relative to the viewport */
     top: 0; /* Always at the top of the screen */
-    left: 2%; /* Adjust horizontal position as needed */
-    width: 1px; /* Thin vertical line */
-    height: 191px; /* Set a fixed height for the line */
+    left: 5%; /* Adjust horizontal position as needed */
+    width: 3px; /* Thin vertical line */
+    height: 250px; /* Set a fixed height for the line */
     background: #ABB2BF; /* Change color if needed */
     z-index: 9999; /* Stays above other elements */
     pointer-events: none; /* Allows interaction with elements below */
@@ -37,62 +11,134 @@ img {
     flex-direction: column; /* Stack children vertically */
     align-items: flex-start; 
     justify-content: flex-end; 
-    gap: 35px; /* Add spacing between the line and the SVG */
+    gap: 50px; /* Add spacing between the line and the SVG */
 }
 
 body {
-    width: 80vw;  /* Makes sure the body takes full width */
-    height: 100vh; /* Makes sure it takes full height */
+    width: 100%; /* Ensures the body takes the full width of the viewport */
+    height: 100%; /* Ensures the body takes the full height of the viewport */
     overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
-    margin: 0 auto; /* Center the page */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
     z-index: 1; /* Stays below the moving line */
     padding-top: 50px; /* Add padding to prevent content from overlapping the navbar */
     color: #FFFFFF; /* Optional: Set text color for better contrast */
-    background-color: #282C33;
-    }
+    background-color: #282C33; /* Background color */
+    box-sizing: border-box; /* Ensures padding and borders are included in width/height */
+ }
 
-.svg-navbar {
-    position: fixed; /* Keeps the navbar fixed at the top */
-    top: 0;
-    left :20%; /* Adjust horizontal position as needed */
-    width: 80%; /* Full width of the screen */
-    height: 50px; /* djust height as needed */
-    margin-left: -150px;
+/* Optional: Add a hover effect for the SVGs */
+.moving-line img:hover, .moving-line svg:hover {
+    transform: scale(1.2); /* Scale up the SVG on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
 }
-
 .moving-line img, .moving-line svg {
     pointer-events: auto; /* Ensure the SVG is clickable */
     display: block;
-    width: 32px; /* Adjust size as needed */
-    height: 32px; /* Adjus size as needed */
-    margin-left: -15px;
-    margin-bottom: -110px;
-    margin-top: 80px; 
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */    
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjus size as needed */
+    margin-left: -21px;
+    margin-bottom: -165px; /* Adjust vertical position as needed */
+    margin-top: 120px;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    
 }
 
-.sidebar-left {
-    position: fixed ; /* Keeps the sidebar fixed relative to the viewport */
+.navbar {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Two columns: one for the logo, one for the menu */
+     /* Vertically center the content */
+    position: fixed;
     top: 0;
-    left: 0; /* Position the sidebar on the left */
-    width: 15vw; /* Adjust width as needed */
-    height: 100%; /* Full height of the viewport */
-    background-image: url('page/background.png'); /* Add background image */
-    background-size: cover; /* Cover the entire sidebar area */
-    background-repeat: no-repeat; /* Prevent repeating the background image */
-    z-index: 1; /* Stays below the moving line */
+    left: 0;
+    right: 0;
+    width: 100%; /* Full width */
+    height: 7%; /* Adjust height as needed */
+    background-color: #282C33;
+    backdrop-filter: blur(10px);
+    z-index: 1000; /* Ensure it stays above other elements */
+
 }
 
-.sidebar-right {
-    position: fixed ; /* Keeps the sidebar fixed relative to the viewport */
-    top: 0;
-    right: 0; /* Position the sidebar on the right */
-    width: 5vw; /* Adjust width as needed */
-    height: 100%; /* Full height of the viewport */
-    background-image: url('page/background.png'); /* Add background image */
-    background-size: cover; /* Cover the entire sidebar area */
-    background-repeat: no-repeat; /* Prevent repeating the background image */
-    z-index: 1; /* Stays below the moving line */
+.navbar-menu {
+    text-decoration: none; /* Removes the underline */
+    color: white; /* Sets the text color to white */
+    font-size: 25px; /* Adjust font size as needed */
+
+}
+
+.navbar-menu:hover {
+    color: #C778DD; /* Optional: Change color on hover */
+    transform: scale(1.2);
+
+}
+
+.grid-col3{
+    grid-column: span 3;
+}
+.grid-col1{
+    grid-column: span 1;
+}
+.grid-col2{
+    grid-column: span 2;
+}
+
+.grid-col4 {
+    grid-column: span 4;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-gap: 10px;
+}
+
+.grid-item {
+    grid-column: span 1;
+    text-align: center;
+    padding: 20px;
+        }
+
+.grid-item img ,.grid-item svg {
+    object-fit: cover; /* Ensures the image covers the grid item */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    pointer-events: auto; /* Ensure the SVG is clickable */
+    display: block;
+}
+.grid-item:hover img, .grid-item:hover svg {
+    transform: scale(1.05); /* Scale up the image on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.pink-hash {
+    color: #C778DD; /* Pink color for the hash */
+    font-weight: bold; /* Optional: Make it bold */
+}
+
+.grid-item.grid-col2 {
+    display: flex; /* Use flexbox for the menu items */
+    justify-content: center; /* Center the menu items */
+    gap: 20px; /* Add spacing between menu items */
 }
 
 
+
+.fira-code {
+    font-family: "Fira Code", monospace;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+.non-clickable {
+    pointer-events: none !important; /* Disable all pointer events */
+    transform: none !important; /* Disable all transformations */
+}
+
+.row-container {
+    display: flex; /* Use Flexbox to align items in a row */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Add space between the images */
+    gap: 20px; /* Optional: Add spacing between the images */
+    padding: 0 20px; /* Add padding for spacing */
+}
